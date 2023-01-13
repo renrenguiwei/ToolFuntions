@@ -1,3 +1,46 @@
+// 1、返回一个数组对象
+const {x,xx,xxx} = this.state
+{
+    x:'',
+        xx:'',
+    xxx:''
+}
+// 单独拿出来
+{x} = {
+        x:''
+    }
+
+    // 2、时间 new Date()
+    +new Date()	// 1520243277069
+    +Date.now()	// 1520243277069
+new Date()	// Mon Mar 05 2018 17:47:57
+Date.now()	// GMT+0800 (+08)1520243277069
+
+// +号是毫秒数变换的简写
+
+// 3、正则表达式 “$&、$`、$'、$1、$2、$3、……”
+/*
+$& - 正则表达式匹配的文本
+$` - 匹配文本的左侧内容
+$' - 匹配文本的右侧内容
+$1 - 第一个括号表达式匹配到的内容
+*/
+var text  = "abc123def", total, left, right;
+total = text.replace(/\d+/g, "[$&]");   // abc[123]def
+left  = text.replace(/\d+/g, "[$`]");   // abc[abc]def
+right = text.replace(/\d+/g, "[$']");   // abc[def]def
+
+/*
+原始字符串：我是程序员
+正则：(.*)(程序员)(.*)
+替换为：$1工程师$3
+
+正则：(.*)(([^不是]|[^是]|)程序员)(.*)
+替换为：$1工程师$4
+*/
+
+// 注意：$&!==$1  前者匹配替换输出所有，后者只替换括号内
+
 // 一、验证函数
 
 // 电子邮件格式
@@ -27,34 +70,34 @@ function isChinese(chinese) {
 
 // http转换为https
 function http2https(url){
-  if (url){
-    let newUrl = url.replace(/http:/,'https:');
-    return newUrl;
-  }else{
-    return null;
-  }
+    if (url){
+        let newUrl = url.replace(/http:/,'https:');
+        return newUrl;
+    }else{
+        return null;
+    }
 }
 
 //验证身份证格式
 function checkPid(pId){
     var res = pId.match(/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/g);
-    return res;     
+    return res;
 }
 
 // 是否为数字
 function isNumber(temp) {
-　　var re=/^[0-9]+$/;
-　　if(re.test(temp)) return true;
-　　　return false;
+    var re=/^[0-9]+$/;
+    if(re.test(temp)) return true;
+    return false;
 }
 
 // 密码由6-12位字母、数字组成
 function pwdFormat(param){
-  let res = param.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/);
-  return res;
+    let res = param.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/);
+    return res;
 }
 
-function formatDate (param) {  
+function formatDate (param) {
     var date = new Date(Number(param+'000'));
     Y = date.getFullYear() + '-';
     M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
@@ -63,10 +106,10 @@ function formatDate (param) {
     m = date.getMinutes() + ':';
     s = date.getSeconds();
     var time = Y+M+D;
-    return time;  
-} 
+    return time;
+}
 
-function formatDateOther (param) {  
+function formatDateOther (param) {
     var date = new Date(Number(param+'000'));
     Y = date.getFullYear() + '/';
     M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '/';
@@ -75,8 +118,8 @@ function formatDateOther (param) {
     m = (date.getMinutes() <10 ? '0'+date.getMinutes() : date.getMinutes())+ ':';
     s = (date.getSeconds() <10 ? '0'+date.getSeconds() : date.getSeconds());
     var time = Y+M+D+h+m+s;
-    return time;  
-} 
+    return time;
+}
 
 // 二、倒计时器
 function timer(time) {
@@ -109,9 +152,9 @@ function dataEncrypt(values){
 
 
 function dataSign(values){
-    var rsa = new RSAKey();// 数据加签  
-    rsa.readPrivateKeyFromPEMString(private_key);//添加私钥  
-    var rsaSignStr = rsa.signString(values, 'sha1');//SHA1WithRSA算法加密  
+    var rsa = new RSAKey();// 数据加签
+    rsa.readPrivateKeyFromPEMString(private_key);//添加私钥
+    var rsaSignStr = rsa.signString(values, 'sha1');//SHA1WithRSA算法加密
     return hex2b64(rsaSignStr);//base64编码
 }
 function dataDecrypt(data){
@@ -143,22 +186,6 @@ function pwdFormat(param){
     var res = param.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/);
     return res;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
