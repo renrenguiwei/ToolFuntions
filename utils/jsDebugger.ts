@@ -19,6 +19,7 @@ function superDebug(fieldName: string) {
                 if(isHitTarget(key, fieldName)){
                     console.log('__debuggerKeys__', fieldName)
                     debugger
+                    return
                 }
             })
         }
