@@ -6,7 +6,7 @@
  * 4.断点
  *
  * Ts转Js网站: https://www.typescriptlang.org/play?#code
- * 注意：放在类中去掉function关键字
+ * 注意：放在类中去掉function关键字了
  */
 function superDebug(fieldName: string) {
     const debuggerKeys = window['debuggerKeys']
