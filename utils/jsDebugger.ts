@@ -32,3 +32,30 @@ function superDebug(fieldName: string) {
         return new RegExp(key).test(target);
     }
 }
+
+/** 编译后
+ superDebug(fieldName) {
+    const debuggerKeys = window['debuggerKeys'];
+    if (debuggerKeys) {
+        if (typeof debuggerKeys === 'string') {
+            if (isHitTarget(debuggerKeys, fieldName)) {
+                console.log('debuggerKeys', fieldName);
+                debugger;
+            }
+        }
+        else if (Array.isArray(debuggerKeys)) {
+            debuggerKeys.forEach(key => {
+                console.log('debuggerKeys', fieldName);
+                if (isHitTarget(key, fieldName)) {
+                    console.log('debuggerKeys', fieldName);
+                    debugger;
+                    return;
+                }
+            });
+        }
+    }
+    function isHitTarget(key, target) {
+        return new RegExp(key).test(target);
+    }
+}
+ */
